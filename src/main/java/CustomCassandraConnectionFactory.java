@@ -55,7 +55,8 @@ public class CustomCassandraConnectionFactory implements CassandraConnectionFact
                 .addContactPoints(hosts.toArray(new Inet4Address[0]))
                 .withPort(conf.port())
                 .withRetryPolicy(
-                        new MultipleRetryPolicy(conf.queryRetryCount(), conf.queryRetryDelay()))
+                        //new MultipleRetryPolicy(conf.queryRetryCount(), conf.queryRetryDelay()))
+			new MultipleRetryPolicy(conf.queryRetryCount()))
                 .withReconnectionPolicy(
                         new ExponentialReconnectionPolicy(conf.minReconnectionDelayMillis(), conf.maxReconnectionDelayMillis()))
                 .withLoadBalancingPolicy(
